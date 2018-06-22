@@ -28,7 +28,6 @@ composer require tecpresso/laravel-allow-non-rfc-compliant-email-patch
 
 This library corresponds to auto discovery
 
-If you using laravel 5.4. you have to add the provider in the providers array (config/app.php)
 
 
 
