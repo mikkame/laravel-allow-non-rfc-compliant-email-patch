@@ -7,7 +7,7 @@ before_script:
   - travis_retry composer require "illuminate/support:${ILLUMINATE_VERSION}"
 
 script:
-  - phpunit
+  - travis_retry composer test
 
 matrix:
   include:
