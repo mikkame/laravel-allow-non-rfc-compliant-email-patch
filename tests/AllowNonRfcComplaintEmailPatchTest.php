@@ -1,6 +1,7 @@
 <?php namespace Tecpresso\AllowNonRfcComplaintEmailPatch;
 
 use Mail;
+use Egulias\EmailValidator\Validation\RFCValidation;
 
 class AllowNonRfcComplaintEmailPatchTest extends \Orchestra\Testbench\TestCase
 {
@@ -66,22 +67,23 @@ class AllowNonRfcComplaintEmailPatchTest extends \Orchestra\Testbench\TestCase
 
 
     /**
-     * @expectedException Swift_RfcComplianceException
      */
     public function test_excepted_error1()
     {
+        $this->expectException(\Swift_RfcComplianceException::class);
+
         Mail::raw('this is test mail', function ($message) {
             $message->to('@');
             $message->from('test@example.com');
         });
     }
 
-
     /**
-     * @expectedException Swift_RfcComplianceException
      */
     public function test_excepted_error2()
     {
+        $this->expectException(\Swift_RfcComplianceException::class);
+
         Mail::raw('this is test mail', function ($message) {
             $message->to('');
             $message->from('test@example.com');
@@ -89,13 +91,48 @@ class AllowNonRfcComplaintEmailPatchTest extends \Orchestra\Testbench\TestCase
     }
 
     /**
-     * @expectedException Swift_RfcComplianceException
      */
     public function test_excepted_error3()
     {
+        $this->expectException(\Swift_RfcComplianceException::class);
+
         Mail::raw('this is test mail', function ($message) {
             $message->to(null);
             $message->from('test@example.com');
         });
+    }
+
+    public function emailDataProvider()
+    {
+        return [
+            ['test@example.com', true],
+            ['a@b', true],
+            ['.@.', true],
+            ['@', false],
+            ['chars', false],
+            ['chars@', false],
+            ['@chars', false],
+        ];
+    }
+
+    /**
+     * @dataProvider emailDataProvider
+     */
+    public function testEmailValidation($email, $expected)
+    {
+        $emailValidator = new AllowNonRfcComplaintEmailValidator();
+        $this->assertSame($expected, $emailValidator->isValid($email, new RFCValidation()));
+    }
+
+    /**
+     * Validatorの適用を確認
+     */
+    public function testLookupSharedInstance()
+    {
+        $container = \Swift_DependencyContainer::getInstance();
+        $this->assertInstanceOf(
+            AllowNonRfcComplaintEmailValidator::class,
+            $container->lookup('email.validator')
+        );
     }
 }

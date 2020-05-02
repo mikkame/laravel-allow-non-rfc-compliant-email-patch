@@ -8,11 +8,9 @@
          convertWarningsToExceptions="true"
          processIsolation="false"
          stopOnFailure="false"
-         syntaxCheck="false"
 >
     <testsuites>
         <testsuite name="Package Test Suite">
-            <file>./tests/BeforeLoadAllowNonRfcComplaintEmailPatchTest.php</file>
             <file>./tests/AllowNonRfcComplaintEmailPatchTest.php</file>
         </testsuite>
     </testsuites>
