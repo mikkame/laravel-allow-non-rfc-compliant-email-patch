@@ -3,7 +3,7 @@
     "description": "Allow non-rfc compliant email (ex. example..@example.com)",
     "type": "library",
     "require": {
-        "illuminate/support": ">=5.5.0||6.0.0",
+        "illuminate/support": ">=5.5.0||6.0.0||7.0.0",
         "php" : ">=7.0",
         "swiftmailer/swiftmailer": "~5.4|~6.0"
     },
