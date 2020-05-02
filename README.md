@@ -1,6 +1,6 @@
 # Allow non rfc complaint email validator
 
-[![Build Status](https://travis-ci.org/tecpresso/laravel-allow-non-rfc-compliant-email-patch.svg?branch=master)](https://travis-ci.org/tecpresso/laravel-allow-non-rfc-compliant-email-patch)
+[![Build Status](https://travis-ci.org/mikkame/laravel-allow-non-rfc-compliant-email-patch.svg?branch=master)](https://travis-ci.org/mikkame/laravel-allow-non-rfc-compliant-email-patch)
 [![Latest Stable Version](https://poser.pugx.org/tecpresso/laravel-allow-non-rfc-compliant-email-patch/version)](https://packagist.org/packages/tecpresso/laravel-allow-non-rfc-compliant-email-patch)
 [![Total Downloads](https://poser.pugx.org/tecpresso/laravel-allow-non-rfc-compliant-email-patch/downloads)](https://packagist.org/packages/tecpresso/laravel-allow-non-rfc-compliant-email-patch)
 [![License](https://poser.pugx.org/tecpresso/laravel-allow-non-rfc-compliant-email-patch/license)](https://packagist.org/packages/tecpresso/laravel-allow-non-rfc-compliant-email-patch)
